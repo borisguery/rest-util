@@ -22,14 +22,14 @@ interface ErrorFactoryInterface
      *
      * @return string
      */
-    function getIdentifier();
+    public function getIdentifier(): string;
 
     /**
      * Returns the Error created from the given Exception
      *
      * @param \Exception                $exception
      * @param ExceptionMappingInterface $mapping
-     * @return ErrorInterface
+     * @return ErrorInterface|null
      */
-    function createError(\Exception $exception, ExceptionMappingInterface $mapping);
+    public function createError(\Exception $exception, ExceptionMappingInterface $mapping): ?ErrorInterface;
 }

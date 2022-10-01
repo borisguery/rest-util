@@ -9,6 +9,7 @@
 
 namespace Tbbc\RestUtil\Tests\Error;
 
+use PHPUnit\Framework\TestCase;
 use Tbbc\RestUtil\Error\DefaultErrorFactory;
 use Tbbc\RestUtil\Error\Error;
 use Tbbc\RestUtil\Error\ErrorResolver;
@@ -19,7 +20,7 @@ use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
 /**
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
  */
-class DefaultErrorFactoryTest extends \PHPUnit_Framework_TestCase
+class DefaultErrorFactoryTest extends TestCase
 {
     public function testDefaultErrorFactoryCreateErrorSetExceptionMessageIfNoMessageIsGiven()
     {

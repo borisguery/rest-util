@@ -20,5 +20,5 @@ interface ErrorResolverInterface
      * @param \Exception $exception
      * @return ErrorInterface|null Returns null if no error factory supports the given exception
      */
-    function resolve(\Exception $exception);
+    public function resolve(\Exception $exception): ?ErrorInterface;
 }

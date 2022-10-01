@@ -10,13 +10,14 @@
 
 namespace Tbbc\RestUtil\Tests\Error\Mapping\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Tbbc\RestUtil\Error\Mapping\Loader\YamlLoader;
 
 /**
  * @author Boris Guéry <guery.b@gmail.com>
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
  */
-class YamlLoaderTest extends \PHPUnit_Framework_TestCase
+class YamlLoaderTest extends TestCase
 {
     public function testLoad()
     {

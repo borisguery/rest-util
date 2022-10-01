@@ -9,16 +9,18 @@
 
 namespace Tbbc\RestUtil\Tests\Error;
 
+use PHPUnit\Framework\TestCase;
 use Tbbc\RestUtil\Error\Error;
 
 /**
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
  */
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class ErrorTest extends TestCase
 {
     public function testExtendedMessageAndMoreInfoUrlAreOptional()
     {
         $error = new Error(400, 400110, 'Error message');
+        $this->assertNotNull($error);
     }
 
     public function testToArrayReturnsWellFormedArray()
@@ -27,7 +29,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
 
         $expectedArray = array(
             'http_status_code' => 400,
-            'code' => 400110,
+            'code' => '400110',
             'message' => 'Error message',
             'extended_message' => 'Extended message',
             'more_info_url' => 'http://api.my.tld/error/400110',
