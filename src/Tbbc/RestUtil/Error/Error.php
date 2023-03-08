@@ -21,8 +21,8 @@ class Error implements ErrorInterface
     protected $errorExtendedMessage;
     protected $errorMoreInfoUrl;
 
-    public function __construct($httpStatusCode, $errorCode, $errorMessage, $errorExtendedMessage = null,
-                                $errorMoreInfoUrl = null)
+    public function __construct(int $httpStatusCode, string $errorCode, string $errorMessage, $errorExtendedMessage = null,
+                                ?string $errorMoreInfoUrl = null)
     {
         $this->httpStatusCode = $httpStatusCode;
         $this->errorCode      = $errorCode;
@@ -34,7 +34,7 @@ class Error implements ErrorInterface
     /**
      * {@inheritDoc}
      */
-    public function getHttpStatusCode()
+    public function getHttpStatusCode(): int
     {
         return $this->httpStatusCode;
     }
@@ -42,7 +42,7 @@ class Error implements ErrorInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorCode()
+    public function getErrorCode(): string
     {
         return $this->errorCode;
     }
@@ -50,7 +50,7 @@ class Error implements ErrorInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorMessage()
+    public function getErrorMessage(): string
     {
         return $this->errorMessage;
     }
@@ -58,7 +58,7 @@ class Error implements ErrorInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorExtendedMessage()
+    public function getErrorExtendedMessage(): mixed
     {
         return $this->errorExtendedMessage;
     }
@@ -66,7 +66,7 @@ class Error implements ErrorInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorMoreInfoUrl()
+    public function getErrorMoreInfoUrl(): ?string
     {
         return $this->errorMoreInfoUrl;
     }
@@ -74,14 +74,14 @@ class Error implements ErrorInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
-        return array(
+        return [
             'http_status_code' => $this->getHttpStatusCode(),
             'code' => $this->getErrorCode(),
             'message' => $this->getErrorMessage(),
             'extended_message' => $this->getErrorExtendedMessage(),
             'more_info_url' => $this->getErrorMoreInfoUrl(),
-        );
+        ];
     }
-} 
+}

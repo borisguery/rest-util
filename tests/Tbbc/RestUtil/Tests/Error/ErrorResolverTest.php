@@ -9,9 +9,11 @@
 
 namespace Tbbc\RestUtil\Tests\Error;
 
+use PHPUnit\Framework\TestCase;
 use Tbbc\RestUtil\Error\DefaultErrorFactory;
 use Tbbc\RestUtil\Error\Error;
 use Tbbc\RestUtil\Error\ErrorFactoryInterface;
+use Tbbc\RestUtil\Error\ErrorInterface;
 use Tbbc\RestUtil\Error\ErrorResolver;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMap;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMapping;
@@ -21,7 +23,7 @@ use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
  * @author Boris Guéry <guery.b@gmail.com>
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
  */
-class ErrorResolverTest extends \PHPUnit_Framework_TestCase
+class ErrorResolverTest extends TestCase
 {
     public function testResolveWithDefaultErrorFactory()
     {
@@ -55,7 +57,7 @@ class ErrorResolverTest extends \PHPUnit_Framework_TestCase
                 'exceptionClassName' => 'RuntimeException',
                 'factory' => '__DEFAULT__',
                 'httpStatusCode' => 500,
-                'errorCode' => 123,
+                'errorCode' => '123',
                 'errorMessage' => 'This is a runtime exception',
                 'errorExtendedMessage' => 'More extended message for this RuntimeException',
                 'errorMoreInfoUrl' => 'http://api.my.tld/error/500123',
@@ -66,7 +68,7 @@ class ErrorResolverTest extends \PHPUnit_Framework_TestCase
                 'exceptionClassName' => 'InvalidArgumentException',
                 'factory' => 'custom',
                 'httpStatusCode' => 400,
-                'errorCode' => 321,
+                'errorCode' => '321',
                 'errorMessage' => 'Invalid query arguments',
                 'errorExtendedMessage' => 'More extended message for this InvalidArgumentException',
                 'errorMoreInfoUrl' => 'http://api.my.tld/error/400321',
@@ -79,12 +81,12 @@ class ErrorResolverTest extends \PHPUnit_Framework_TestCase
 
 class CustomErrorFactory implements ErrorFactoryInterface
 {
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'custom';
     }
 
-    public function createError(\Exception $exception, ExceptionMappingInterface $mapping)
+    public function createError(\Exception $exception, ExceptionMappingInterface $mapping): ErrorInterface
     {
         return new Error($mapping->getHttpStatusCode(), $mapping->getErrorCode(), $mapping->getErrorMessage(),
             $mapping->getErrorExtendedMessage(), $mapping->getErrorMoreInfoUrl());

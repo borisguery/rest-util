@@ -29,7 +29,7 @@ class ErrorResolver implements ErrorResolverInterface
         $this->map = $map;
     }
 
-    public function resolve(\Exception $exception)
+    public function resolve(\Exception $exception): ?ErrorInterface
     {
         try {
             $mapping = $this->map->getMapping($exception);
@@ -46,8 +46,8 @@ class ErrorResolver implements ErrorResolverInterface
         return null;
     }
 
-    public function registerFactory(ErrorFactoryInterface $errorFactory)
+    public function registerFactory(ErrorFactoryInterface $errorFactory): void
     {
         $this->errorFactories[$errorFactory->getIdentifier()] = $errorFactory;
     }
-} 
+}

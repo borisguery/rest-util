@@ -19,9 +19,9 @@ interface ErrorInterface
      * Returns the corresponding HTTP Status Code
      * for this Error
      *
-     * @return string
+     * @return int
      */
-    function getHttpStatusCode();
+    public function getHttpStatusCode(): int;
 
     /**
      * Returns the error code that should be appended
@@ -29,14 +29,14 @@ interface ErrorInterface
      *
      * @return string
      */
-    function getErrorCode();
+    public function getErrorCode(): string;
 
     /**
      * Returns a short message describing the Error
      *
      * @return string
      */
-    function getErrorMessage();
+    public function getErrorMessage(): string;
 
     /**
      * Returns an extended message for giving detailed
@@ -44,20 +44,20 @@ interface ErrorInterface
      *
      * @return mixed
      */
-    function getErrorExtendedMessage();
+    public function getErrorExtendedMessage(): mixed;
 
     /**
      * Returns an URL to get more information about the
      * Error
      *
-     * @return string
+     * @return ?string
      */
-    function getErrorMoreInfoUrl();
+    public function getErrorMoreInfoUrl(): ?string;
 
     /**
      * Returns a normalized array version of the Error
      *
      * @return array
      */
-    function toArray();
-} 
+    public function toArray(): array;
+}

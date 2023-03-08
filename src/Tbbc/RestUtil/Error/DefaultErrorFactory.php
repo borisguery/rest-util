@@ -17,12 +17,12 @@ use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
  */
 class DefaultErrorFactory implements ErrorFactoryInterface
 {
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return '__DEFAULT__';
     }
 
-    public function createError(\Exception $exception, ExceptionMappingInterface $mapping)
+    public function createError(\Exception $exception, ExceptionMappingInterface $mapping): ErrorInterface
     {
         $errorMessage = $mapping->getErrorMessage();
         if (empty($errorMessage)) {

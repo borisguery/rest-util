@@ -20,22 +20,22 @@ interface ExceptionMappingInterface
      *
      * @return string
      */
-    function getExceptionClassName();
+    public function getExceptionClassName(): string;
 
     /**
      * Factory unique identifier
      *
      * @return string
      */
-    function getErrorFactoryIdentifier();
+    public function getErrorFactoryIdentifier(): string;
 
     /**
      * Returns Http Status Code that should be mapped
      * to this Exception
      *
-     * @return string
+     * @return int
      */
-    function getHttpStatusCode();
+    public function getHttpStatusCode(): int;
 
     /**
      * Returns the Error::errorCode that should be mapped
@@ -43,14 +43,14 @@ interface ExceptionMappingInterface
      *
      * @return string
      */
-    function getErrorCode();
+    public function getErrorCode(): string;
 
     /**
      * Returns a short message describing the error
      *
      * @return string
      */
-    function getErrorMessage();
+    public function getErrorMessage(): ?string;
 
     /**
      * Returns a more extended message for giving detailed
@@ -58,7 +58,7 @@ interface ExceptionMappingInterface
      *
      * @return mixed
      */
-    function getErrorExtendedMessage();
+    public function getErrorExtendedMessage();
 
     /**
      * Returns an URL for getting more information about the
@@ -66,5 +66,5 @@ interface ExceptionMappingInterface
      *
      * @return string
      */
-    function getErrorMoreInfoUrl();
+    public function getErrorMoreInfoUrl(): ?string;
 }

@@ -27,8 +27,8 @@ class ExceptionMapping implements ExceptionMappingInterface
     {
         $this->exceptionClassName     = $mapping['exceptionClassName'];
         $this->errorFactoryIdentifier = $mapping['factory'];
-        $this->httpStatusCode         = $mapping['httpStatusCode'];
-        $this->errorCode              = $mapping['errorCode'];
+        $this->httpStatusCode         = (int) $mapping['httpStatusCode'];
+        $this->errorCode              = (string) $mapping['errorCode'];
         $this->errorMessage           = $mapping['errorMessage'];
         $this->errorExtendedMessage   = $mapping['errorExtendedMessage'];
         $this->errorMoreInfoUrl       = $mapping['errorMoreInfoUrl'];
@@ -37,7 +37,7 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getExceptionClassName()
+    public function getExceptionClassName(): string
     {
         return $this->exceptionClassName;
     }
@@ -45,7 +45,7 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorFactoryIdentifier()
+    public function getErrorFactoryIdentifier(): string
     {
         return $this->errorFactoryIdentifier;
     }
@@ -53,7 +53,7 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getHttpStatusCode()
+    public function getHttpStatusCode(): int
     {
         return $this->httpStatusCode;
     }
@@ -61,7 +61,7 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorCode()
+    public function getErrorCode(): string
     {
         return $this->errorCode;
     }
@@ -69,7 +69,7 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorMessage()
+    public function getErrorMessage(): ?string
     {
         return $this->errorMessage;
     }
@@ -85,8 +85,8 @@ class ExceptionMapping implements ExceptionMappingInterface
     /**
      * {@inheritDoc}
      */
-    public function getErrorMoreInfoUrl()
+    public function getErrorMoreInfoUrl(): ?string
     {
         return $this->errorMoreInfoUrl;
     }
-} 
+}
