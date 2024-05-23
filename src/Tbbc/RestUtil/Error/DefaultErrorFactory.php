@@ -9,6 +9,7 @@
 
 namespace Tbbc\RestUtil\Error;
 
+use Exception;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
 
 /**
@@ -22,7 +23,7 @@ class DefaultErrorFactory implements ErrorFactoryInterface
         return '__DEFAULT__';
     }
 
-    public function createError(\Exception $exception, ExceptionMappingInterface $mapping): ErrorInterface
+    public function createError(Exception $exception, ExceptionMappingInterface $mapping): ErrorInterface
     {
         $errorMessage = $mapping->getErrorMessage();
         if (empty($errorMessage)) {

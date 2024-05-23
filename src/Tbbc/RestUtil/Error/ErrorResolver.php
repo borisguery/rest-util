@@ -9,6 +9,7 @@
 
 namespace Tbbc\RestUtil\Error;
 
+use Exception;
 use Tbbc\RestUtil\Error\Exception\NotFoundExceptionMappingException;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMap;
 
@@ -21,20 +22,19 @@ class ErrorResolver implements ErrorResolverInterface
     /**
      * @var ErrorFactoryInterface[]
      */
-    protected $errorFactories = array();
-    protected $map;
+    protected array $errorFactories = [];
+    protected ExceptionMap $map;
 
     public function __construct(ExceptionMap $map)
     {
         $this->map = $map;
     }
 
-    public function resolve(\Exception $exception): ?ErrorInterface
+    public function resolve(Exception $exception): ?ErrorInterface
     {
         try {
             $mapping = $this->map->getMapping($exception);
             if (isset($this->errorFactories[$mapping->getErrorFactoryIdentifier()])) {
-
                 return $this->errorFactories[$mapping->getErrorFactoryIdentifier()]->createError($exception, $mapping);
             }
 

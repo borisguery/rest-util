@@ -9,13 +9,11 @@
 
 namespace Tbbc\RestUtil\Tests\Error;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Tbbc\RestUtil\Error\DefaultErrorFactory;
 use Tbbc\RestUtil\Error\Error;
-use Tbbc\RestUtil\Error\ErrorResolver;
-use Tbbc\RestUtil\Error\Mapping\ExceptionMap;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMapping;
-use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
 
 /**
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
@@ -25,7 +23,7 @@ class DefaultErrorFactoryTest extends TestCase
     public function testDefaultErrorFactoryCreateErrorSetExceptionMessageIfNoMessageIsGiven()
     {
         // setup
-        $exceptionMapping = new ExceptionMapping(array(
+        $exceptionMapping = new ExceptionMapping([
             'exceptionClassName' => '\InvalidArgumentException',
             'factory' => 'default',
             'httpStatusCode' => 400,
@@ -33,11 +31,11 @@ class DefaultErrorFactoryTest extends TestCase
             'errorMessage' => null,
             'errorExtendedMessage' => 'Extended message',
             'errorMoreInfoUrl' => 'http://api.my.tld/doc/error/400101',
-        ));
+        ]);
 
         // test
         $defaultErrorFactory = new DefaultErrorFactory();
-        $exception = new \InvalidArgumentException('This is an invalid argument exception.');
+        $exception = new InvalidArgumentException('This is an invalid argument exception.');
 
         $expectedError = new Error(
             400,
@@ -54,7 +52,7 @@ class DefaultErrorFactoryTest extends TestCase
     public function testDefaultErrorFactoryCreateErrorIgnoreExceptionMessageIfAMessageIsGiven()
     {
         // setup
-        $exceptionMapping = new ExceptionMapping(array(
+        $exceptionMapping = new ExceptionMapping([
             'exceptionClassName' => '\InvalidArgumentException',
             'factory' => 'default',
             'httpStatusCode' => 400,
@@ -62,11 +60,11 @@ class DefaultErrorFactoryTest extends TestCase
             'errorMessage' => 'Custom error message',
             'errorExtendedMessage' => 'Extended message',
             'errorMoreInfoUrl' => 'http://api.my.tld/doc/error/400101',
-        ));
+        ]);
 
         // test
         $defaultErrorFactory = new DefaultErrorFactory();
-        $exception = new \InvalidArgumentException('This is an invalid argument exception.');
+        $exception = new InvalidArgumentException('This is an invalid argument exception.');
 
         $expectedError = new Error(
             400,

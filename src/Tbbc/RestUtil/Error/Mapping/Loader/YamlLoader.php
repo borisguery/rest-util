@@ -39,4 +39,4 @@ class YamlLoader
 
         return $map;
     }
-} 
+}

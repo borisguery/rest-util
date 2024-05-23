@@ -17,47 +17,37 @@ interface ErrorInterface
 {
     /**
      * Returns the corresponding HTTP Status Code
-     * for this Error
-     *
-     * @return int
+     * for this Error.
      */
     public function getHttpStatusCode(): int;
 
     /**
      * Returns the error code that should be appended
-     * to the Http Status Code
-     *
-     * @return string
+     * to the Http Status Code.
      */
     public function getErrorCode(): string;
 
     /**
-     * Returns a short message describing the Error
-     *
-     * @return string
+     * Returns a short message describing the Error.
      */
     public function getErrorMessage(): string;
 
     /**
      * Returns an extended message for giving detailed
-     * information about the Error
-     *
-     * @return mixed
+     * information about the Error.
      */
     public function getErrorExtendedMessage(): mixed;
 
     /**
      * Returns an URL to get more information about the
-     * Error
+     * Error.
      *
      * @return ?string
      */
     public function getErrorMoreInfoUrl(): ?string;
 
     /**
-     * Returns a normalized array version of the Error
-     *
-     * @return array
+     * Returns a normalized array version of the Error.
      */
     public function toArray(): array;
 }
