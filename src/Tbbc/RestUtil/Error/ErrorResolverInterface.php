@@ -9,16 +9,17 @@
 
 namespace Tbbc\RestUtil\Error;
 
+use Exception;
+
 /**
  * @author Benjamin Dulau <benjamin.dulau@gmail.com>
  */
 interface ErrorResolverInterface
 {
     /**
-     * Takes an \Exception and converts it into an ErrorInterface
+     * Takes an \Exception and converts it into an ErrorInterface.
      *
-     * @param \Exception $exception
      * @return ErrorInterface|null Returns null if no error factory supports the given exception
      */
-    public function resolve(\Exception $exception): ?ErrorInterface;
+    public function resolve(Exception $exception): ?ErrorInterface;
 }

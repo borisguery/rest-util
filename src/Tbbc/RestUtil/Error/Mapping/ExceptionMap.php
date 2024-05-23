@@ -9,35 +9,36 @@
 
 namespace Tbbc\RestUtil\Error\Mapping;
 
+use Exception;
+use Iterator;
 use Tbbc\RestUtil\Error\Exception\NotFoundExceptionMappingException;
 
 /**
  * @author Boris Guéry <guery.b@gmail.com>
  */
-class ExceptionMap implements \Iterator
+class ExceptionMap implements Iterator
 {
     /**
      * @var ExceptionMapping[]
      */
     private $map;
 
-    public function add(ExceptionMapping $mapping)
+    public function add(ExceptionMapping $mapping): void
     {
         $this->map[$mapping->getExceptionClassName()] = $mapping;
     }
 
-    public function merge(ExceptionMap $map)
+    public function merge(ExceptionMap $map): void
     {
         foreach ($map as $mapping) {
             $this->add($mapping);
         }
     }
 
-    public function getMapping(\Exception $exception)
+    public function getMapping(Exception $exception): ExceptionMapping
     {
         foreach ($this->map as $mapping) {
             if (get_class($exception) === $mapping->getExceptionClassName()) {
-
                 return $mapping;
             }
         }

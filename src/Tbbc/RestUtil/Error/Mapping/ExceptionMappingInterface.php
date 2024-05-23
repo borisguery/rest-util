@@ -16,55 +16,41 @@ interface ExceptionMappingInterface
 {
     /**
      * Exception full qualified class name that
-     * is handled by this factory
-     *
-     * @return string
+     * is handled by this factory.
      */
     public function getExceptionClassName(): string;
 
     /**
-     * Factory unique identifier
-     *
-     * @return string
+     * Factory unique identifier.
      */
     public function getErrorFactoryIdentifier(): string;
 
     /**
      * Returns Http Status Code that should be mapped
-     * to this Exception
-     *
-     * @return int
+     * to this Exception.
      */
     public function getHttpStatusCode(): int;
 
     /**
      * Returns the Error::errorCode that should be mapped
-     * to this Exception
-     *
-     * @return string
+     * to this Exception.
      */
     public function getErrorCode(): string;
 
     /**
-     * Returns a short message describing the error
-     *
-     * @return string
+     * Returns a short message describing the error.
      */
     public function getErrorMessage(): ?string;
 
     /**
      * Returns a more extended message for giving detailed
-     * information about the Error
-     *
-     * @return mixed
+     * information about the Error.
      */
-    public function getErrorExtendedMessage();
+    public function getErrorExtendedMessage(): mixed;
 
     /**
      * Returns an URL for getting more information about the
-     * Error
-     *
-     * @return string
+     * Error.
      */
     public function getErrorMoreInfoUrl(): ?string;
 }

@@ -27,13 +27,13 @@ class ErrorTest extends TestCase
     {
         $error = new Error(400, 400110, 'Error message', 'Extended message', 'http://api.my.tld/error/400110');
 
-        $expectedArray = array(
+        $expectedArray = [
             'http_status_code' => 400,
             'code' => '400110',
             'message' => 'Error message',
             'extended_message' => 'Extended message',
             'more_info_url' => 'http://api.my.tld/error/400110',
-        );
+        ];
 
         $this->assertSame($expectedArray, $error->toArray());
     }

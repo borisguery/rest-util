@@ -9,6 +9,7 @@
 
 namespace Tbbc\RestUtil\Error;
 
+use Exception;
 use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
 
 /**
@@ -18,18 +19,12 @@ use Tbbc\RestUtil\Error\Mapping\ExceptionMappingInterface;
 interface ErrorFactoryInterface
 {
     /**
-     * Returns an unique identifier for this error factory
-     *
-     * @return string
+     * Returns an unique identifier for this error factory.
      */
     public function getIdentifier(): string;
 
     /**
-     * Returns the Error created from the given Exception
-     *
-     * @param \Exception                $exception
-     * @param ExceptionMappingInterface $mapping
-     * @return ErrorInterface|null
+     * Returns the Error created from the given Exception.
      */
-    public function createError(\Exception $exception, ExceptionMappingInterface $mapping): ?ErrorInterface;
+    public function createError(Exception $exception, ExceptionMappingInterface $mapping): ?ErrorInterface;
 }

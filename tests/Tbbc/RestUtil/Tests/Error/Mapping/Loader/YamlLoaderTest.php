@@ -22,35 +22,32 @@ class YamlLoaderTest extends TestCase
     public function testLoad()
     {
         $loader = new YamlLoader();
-        $result = $loader->load(__DIR__ . '/fixtures/map.yml');
+        $result = $loader->load(__DIR__.'/fixtures/map.yml');
 
         $this->assertSame(
-            array (
-                'map' =>
-                array (
-                    0 =>
-                    array (
+            [
+                'map' => [
+                    0 => [
                         'class' => 'InvalidArgumentException',
                         'handler' => 'default',
                         'errorCode' => 2000,
                         'errorMessage' => 'Invalid argument provided',
                         'errorExtendedMessage' => 'This is a more extended message for this InvalidArgumentException',
                         'errorMoreInfoUrl' => 'http://api.my.tld/error/2000',
-                    ),
-                    1 =>
-                    array (
+                    ],
+                    1 => [
                         'class' => 'ResourceNotException',
                         'handler' => 'default',
                         'errorCode' => 2001,
                         'errorMessage' => 'The resource could not be found',
-                        'errorExtendedMessage' => array(
+                        'errorExtendedMessage' => [
                             'message1' => 'Extended message 1',
-                            'message2' => 'Extended message 2'
-                        ),
+                            'message2' => 'Extended message 2',
+                        ],
                         'errorMoreInfoUrl' => 'http://api.my.tld/error/2001',
-                    ),
-                ),
-            ),
+                    ],
+                ],
+            ],
             $result
         );
     }
